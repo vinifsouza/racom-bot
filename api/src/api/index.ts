@@ -12,6 +12,6 @@ app.use("/", apiRouter);
 
 app.use(handleErrors);
 
-app.listen(5000, () => {
+app.listen(API_PORT, () => {
   console.log("API - Server Started on Port ", API_PORT, "🔥");
 });
