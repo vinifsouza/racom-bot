@@ -1,3 +1,28 @@
+import json
+from sqlite3 import IntegrityError
+
 from scrap.main import start_scrap
+from database.build_db import CoreDatabase
+
+database = CoreDatabase()
+database.build_schema()
 
 start_scrap()
+
+with open('faq-scraping.json') as f:
+    faqs = json.load(f)
+
+for cat in faqs['categories']:
+    database.insert_category_row(cat['id'], cat['name'])
+
+for faq in faqs['articles']:
+    try:
+        database.insert_faq_row(
+            faq['question'],
+            faq['answer'],
+            faq['category_id']
+        )
+    except IntegrityError as e:
+        msg = ''.join(e.args)
+        if not 'UNIQUE' in msg:
+            raise e
