@@ -18,14 +18,16 @@ class FaqSpider(scrapy.Spider):
             except:
                 pass
 
-        faqs = []
+        faqs = {
+            'categories': [],
+            'articles': []
+        }
 
         for pill in pills:
-            temp_dict = {
+            faqs['categories'].append({
                 'id': pill['id'],
-                'category': pill['name'],
-                'faqs': []
-            }
+                'name': ' '.join(pill['name'].split())
+            })
 
             actual_pill = response.css('div#%s' %pill['id'])
 
@@ -45,13 +47,12 @@ class FaqSpider(scrapy.Spider):
                         if question and answer:
                             faq = {
                                 'question': question,
-                                'answer': answer
+                                'answer': answer,
+                                'category_id': pill['id']
                             }
 
-                            temp_dict['faqs'].append(faq)
+                            faqs['articles'].append(faq)
 
-            faqs.append(temp_dict)
-
-        with open('output.json', 'w') as f:
+        with open('faq-scraping.json', 'w+') as f:
             json.dump(faqs, f)
 
