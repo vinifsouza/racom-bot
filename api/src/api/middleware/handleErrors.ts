@@ -1,6 +1,8 @@
 import Exception from "../../core/exceptions/Exception";
 
 function handleErrors(err, req, res, next) {
+  console.log(err);
+
   if (err instanceof Exception) {
     return res.status(err.getStatus()).json({
       success: false,

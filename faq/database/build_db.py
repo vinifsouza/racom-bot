@@ -1,9 +1,11 @@
+import os
+from pathlib import Path
 import sqlite3
 
 
 class CoreDatabase:
     def __init__(self):
-        self.conn = sqlite3.connect('./database/core.db')
+        self.conn = sqlite3.connect('core.sqlite')
         self.conn.row_factory = sqlite3.Row
         self.cursor = self.conn.cursor()
 

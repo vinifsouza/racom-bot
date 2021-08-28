@@ -4,10 +4,13 @@ from sqlite3 import IntegrityError
 from scrap.main import start_scrap
 from database.build_db import CoreDatabase
 
+print('Building database')
 database = CoreDatabase()
 database.build_schema()
 
+print('Start scraping')
 start_scrap()
+
 
 with open('faq-scraping.json') as f:
     faqs = json.load(f)
@@ -26,3 +29,5 @@ for faq in faqs['articles']:
         msg = ''.join(e.args)
         if not 'UNIQUE' in msg:
             raise e
+
+print('Database built and updated successfully')
