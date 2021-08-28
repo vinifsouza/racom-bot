@@ -1,0 +1,48 @@
+version: "2.0"
+
+nlu:
+- intent: intent_welcome
+  examples: |
+    - hey
+    - olá
+    - oi
+    - bom dia
+    - boa noite
+    - boa tarde
+    - vamos lá
+    - bomdia
+    - bonoite
+    - boatarde
+
+- intent: intent_finish
+  examples: |
+    - até mais
+    - tchau
+    - xau
+    - ótimo dia
+    - depois conversamos
+    - tchau tchau
+
+- intent: intent_about_me
+  examples: |
+    - você é um bot?
+    - você é um humano?
+    - você é uma pessoa?
+    - estou falando com um bot?
+    - estou falando com um humano?
+    - estou falando com uma pessoa?
+    - o que você é?
+    - quem te criou?
+    - como você funciona?
+
+- intent: intent_help
+  examples: |
+    - preciso de ajuda
+    - quero ajuda
+    - pode me ajudar?
+    - consegue me ajudar?
+    - quero muito sua ajuda
+    - ajuda
+    - estou com dúvida
+    - quero tirar uma dúvida
+    - quero saber sobre um assunto
