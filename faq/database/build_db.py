@@ -25,7 +25,6 @@ class CoreDatabase:
         ''', values)
 
         query = query.fetchone()
-        query = dict(query)
 
         if not query:
             self.cursor.execute('''
@@ -108,7 +107,3 @@ class CoreDatabase:
         ''')
 
         return None
-
-if __name__ == '__main__':
-    CoreDatabase().create_faq_table()
-    CoreDatabase().insert_faq_row('titulo', 'conteudo2')

@@ -41,6 +41,7 @@ class FaqSpider(scrapy.Spider):
 
                         question = ''.join(li.css('a::text').getall())
                         question = question[question.find(')')+1:].strip()
+                        question = ' '.join(question.split())
 
                         answer = ''.join(li.css('div#%s' %faq_id).getall())
 
