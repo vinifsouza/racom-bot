@@ -4,10 +4,9 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.events import UserUtteranceReverted
 from rasa_sdk.executor import CollectingDispatcher
 
-
 FINISH_OPTIONS = [
-    { 'title': 'Dúvida sobre COVID', 'payload': '/intent_welcome' },
-    { 'title': 'Finalizar', 'payload': '/intent_finish' }
+    {'title': 'Dúvida sobre COVID', 'payload': '/intent_welcome'},
+    {'title': 'Finalizar', 'payload': '/intent_finish'}
 ]
 
 
@@ -37,13 +36,13 @@ class ActionWelcome(Action):
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            doamin: Dict[Text, Any]) -> List [Dict [Text, Any]]:
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         msg = 'Olá, sou o RacomBot.\n'
         msg += 'Fui treinado para auxiliar em questões sobre COVID-19.\n'
         msg += 'Como posso ajudar hoje?'
 
-        dispatcher.utter_message(text=msg, buttons=FINISH_OPTIONS)
+        dispatcher.utter_message(text=msg)
 
         return []
 
@@ -54,14 +53,13 @@ class ActionAboutme(Action):
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            doamin: Dict[Text, Any]) -> List [Dict [Text, Any]]:
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         about_me = 'Sou um bot desenvolvido por Vinícius Souza, '
         about_me += 'para o processo seletivo da Compasso UOL.'
         about_me += '\n\n'
         about_me += 'Fui treinado para responder dúvidas sobre COVID-19 '
         about_me += 'com base em informações da Fiocruz.'
-
 
         dispatcher.utter_message(text=about_me, buttons=FINISH_OPTIONS)
 
@@ -74,10 +72,31 @@ class ActionHelp(Action):
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            doamin: Dict[Text, Any]) -> List [Dict [Text, Any]]:
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         message = 'Em que posso ajudar?'
 
         dispatcher.utter_message(text=message, buttons=FINISH_OPTIONS)
+
+        return []
+
+
+class RespondFaq(Action):
+    def name(self) -> Text:
+        return 'respond_faq'
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        message_user = tracker.latest_message
+        message_user = message_user['response_selector']['faq']
+        message_user = message_user['response']['intent_response_key']
+        question_id = message_user.replace('faq/', '')
+        print(question_id)
+
+        message = 'RESPONDE FAQ\n\n'
+
+        dispatcher.utter_message(text=message)
 
         return []
