@@ -2,9 +2,11 @@ import json
 
 import scrapy
 
+
 class FaqSpider(scrapy.Spider):
     name = 'faq'
-    start_urls = ['https://mooc.campusvirtual.fiocruz.br/rea/coronavirus/faq.html']
+    start_urls = [
+        'https://mooc.campusvirtual.fiocruz.br/rea/coronavirus/faq.html']
 
     def parse(self, response):
         pills = []
@@ -29,7 +31,7 @@ class FaqSpider(scrapy.Spider):
                 'name': ' '.join(pill['name'].split())
             })
 
-            actual_pill = response.css('div#%s' %pill['id'])
+            actual_pill = response.css('div#%s' % pill['id'])
 
             for _ in actual_pill:
 
@@ -43,12 +45,16 @@ class FaqSpider(scrapy.Spider):
                         question = question[question.find(')')+1:].strip()
                         question = ' '.join(question.split())
 
-                        answer = ''.join(li.css('div#%s' %faq_id).getall())
+                        answer_html = ''.join(
+                            li.css('div#%s' % faq_id).getall())
+                        answer = ''.join(
+                            li.css('div#%s ::text' % faq_id).getall())
 
                         if question and answer:
                             faq = {
                                 'question': question,
-                                'answer': answer,
+                                'answer': ' '.join(answer.strip().split()),
+                                'answer_html': answer_html,
                                 'category_id': pill['id']
                             }
 
@@ -56,4 +62,3 @@ class FaqSpider(scrapy.Spider):
 
         with open('faq-scraping.json', 'w+') as f:
             json.dump(faqs, f)
-

@@ -23,6 +23,7 @@ for faq in faqs['articles']:
         database.insert_faq_row(
             faq['question'],
             faq['answer'],
+            faq['answer_html'],
             faq['category_id']
         )
     except IntegrityError as e:
