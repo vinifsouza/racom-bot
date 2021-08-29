@@ -15,6 +15,7 @@ class FAQRepository {
         "faq_id AS id",
         "faq_question AS question",
         "faq_answer AS answer",
+        "faq_answer_html AS answer_html",
         "faq_cat_id AS category"
       )
       .modify((queryBuilder: any) => {
