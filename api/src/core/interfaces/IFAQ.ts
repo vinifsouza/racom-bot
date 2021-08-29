@@ -12,6 +12,7 @@ export interface IFAQ {
   id: number;
   question: string;
   answer: string;
+  answer_html: string;
   category: string;
 }
 
