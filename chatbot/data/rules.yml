@@ -1,28 +1,32 @@
 version: "2.0"
 
 rules:
+  - rule: Apresente-se sempre que o usuário cumprimentar
+    steps:
+      - intent: intent_welcome
+      - action: action_welcome
 
-- rule: Apresente-se sempre que o usuário cumprimentar
-  steps:
-  - intent: intent_welcome
-  - action: action_welcome
+  - rule: Diga 'Sou um bot' sempre que o cliente questionar
+    steps:
+      - intent: intent_about_me
+      - action: action_about_me
 
-- rule: Diga 'Sou um bot' sempre que o cliente questionar
-  steps:
-  - intent: intent_about_me
-  - action: action_about_me
+  - rule: Apresente um menu sempre que o usuário pedir ajuda
+    steps:
+      - intent: intent_help
+      - action: action_help
 
-- rule: Apresente um menu sempre que o usuário pedir ajuda
-  steps:
-  - intent: intent_help
-  - action: action_help
+  - rule: Diga tchau sempre que o usuário se despedir
+    steps:
+      - intent: intent_finish
+      - action: utter_adeus
 
-- rule: Diga tchau sempre que o usuário se despedir
-  steps:
-  - intent: intent_finish
-  - action: utter_adeus
+  - rule: Pedir para reformular a frase quando não entendido
+    steps:
+      - intent: nlu_fallback
+      - action: action_default_fallback
 
-- rule: Pedir para reformular a frase quando não entendido
-  steps:
-  - intent: nlu_fallback
-  - action: action_default_fallback
+  - rule: Responder FAQ
+    steps:
+      - intent: faq
+      - action: respond_faq

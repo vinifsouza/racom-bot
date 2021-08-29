@@ -1,9 +1,12 @@
 version: "2.0"
 
 stories:
+  - story: initial contact
+    steps:
+      - intent: intent_welcome
+      - action: action_welcome
 
-- story: initial contact
-  steps:
-  - intent: intent_welcome
-  - action: action_welcome
-  - action: action_help
+  - story: faq
+    steps:
+      - intent: faq{"intent":"original_intent"}
+      - action: repond_ask_faq

@@ -1,21 +1,22 @@
 version: "2.0"
 
 intents:
-  - nlu_fallback
   - intent_welcome
+  - intent_finish
   - intent_about_me
   - intent_help
-  - intent_finish
+  - faq
 
 responses:
   utter_adeus:
-  - text: "Tchau, tchau! Até a próxima."
+    - text: Tchau, tchau! Até a próxima.
 
 actions:
   - action_welcome
   - action_about_me
   - action_default_fallback
   - action_help
+  - respond_faq
 
 session_config:
   session_expiration_time: 10
