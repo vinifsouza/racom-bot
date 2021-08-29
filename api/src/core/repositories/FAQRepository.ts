@@ -1,5 +1,6 @@
-import db from "../database/RacomFAQ";
 import { ICategory, IFAQ, IFAQQuestion } from "../interfaces/IFAQ";
+
+import db from "../database/racomFAQ";
 
 class FAQRepository {
   async getFAQCategories(): Promise<ICategory[] | []> {
@@ -14,7 +15,7 @@ class FAQRepository {
         "faq_id AS id",
         "faq_question AS question",
         "faq_answer AS answer",
-        "faq_category AS category"
+        "faq_cat_id AS category"
       )
       .modify((queryBuilder: any) => {
         if (id) {
@@ -40,7 +41,8 @@ class FAQRepository {
         if (question) {
           queryBuilder.where("faq_question", "like", `%${question}%`);
         }
-      });
+      })
+      .orderBy("faq_id");
   }
 }
 

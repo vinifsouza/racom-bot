@@ -1,2 +1,2 @@
-export const API_PORT = 5000;
-export const DATABASE_PATH = "../../faq/database/core.sqlite";
+export const API_PORT = 4444;
+export const DATABASE_PATH = "../../core.sqlite";

@@ -7,12 +7,8 @@ const router = express.Router();
 
 router.get("/", indexController.index);
 
-const faqRouter = express.Router();
-const itemRouter = express.Router({ mergeParams: true });
-
-faqRouter.use("/faq", faqRouter, itemRouter);
-faqRouter.get("/", FAQController.getFat);
-faqRouter.get("/questions", FAQController.getFatQuestion);
+router.get("/faq", FAQController.getFat);
+router.get("/faq/questions", FAQController.getFatQuestion);
 
 router.get("/category", FAQController.getCategory);
 
