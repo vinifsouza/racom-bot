@@ -1,48 +1,337 @@
 version: "2.0"
-
 nlu:
-- intent: intent_welcome
-  examples: |
-    - hey
-    - olá
-    - oi
-    - bom dia
-    - boa noite
-    - boa tarde
-    - vamos lá
-    - bomdia
-    - bonoite
-    - boatarde
+  - intent: intent_welcome
+    examples: "- hey
 
-- intent: intent_finish
-  examples: |
-    - até mais
-    - tchau
-    - xau
-    - ótimo dia
-    - depois conversamos
-    - tchau tchau
+      - olá
 
-- intent: intent_about_me
-  examples: |
-    - você é um bot?
-    - você é um humano?
-    - você é uma pessoa?
-    - estou falando com um bot?
-    - estou falando com um humano?
-    - estou falando com uma pessoa?
-    - o que você é?
-    - quem te criou?
-    - como você funciona?
+      - oi
 
-- intent: intent_help
-  examples: |
-    - preciso de ajuda
-    - quero ajuda
-    - pode me ajudar?
-    - consegue me ajudar?
-    - quero muito sua ajuda
-    - ajuda
-    - estou com dúvida
-    - quero tirar uma dúvida
-    - quero saber sobre um assunto
+      - bom dia
+
+      - boa noite
+
+      - boa tarde
+
+      - vamos lá
+
+      - bomdia
+
+      - bonoite
+
+      - boatarde
+
+      "
+  - intent: intent_finish
+    examples: "- até mais
+
+      - tchau
+
+      - xau
+
+      - ótimo dia
+
+      - depois conversamos
+
+      - tchau tchau
+
+      "
+  - intent: intent_about_me
+    examples: "- você é um bot?
+
+      - você é um humano?
+
+      - você é uma pessoa?
+
+      - estou falando com um bot?
+
+      - estou falando com um humano?
+
+      - estou falando com uma pessoa?
+
+      "
+  - intent: intent_help
+    examples: "- preciso de ajuda
+
+      - quero ajuda
+
+      - pode me ajudar?
+
+      - consegue me ajudar?
+
+      - quero muito sua ajuda
+
+      - ajuda
+
+      - estou com dúvida
+
+      - quero tirar uma dúvida
+
+      - quero saber sobre um assunto
+
+      "
+  - intent: faq/1
+    examples: "- O que é covid-19?"
+  - intent: faq/2
+    examples: "- O que significa a palavra coronavírus?"
+  - intent: faq/3
+    examples: "- O que significa Sars-CoV-2?"
+  - intent: faq/4
+    examples: "- Quando devo usar SARS-CoV-2, COVID-19 e coronavírus?"
+  - intent: faq/5
+    examples: "- Como surgiu o novo Coronavírus?"
+  - intent: faq/6
+    examples: "- O novo coronavírus é o mesmo que os vírus Sars ou Mers?"
+  - intent: faq/7
+    examples: "- Qual é a diferença entre transmissão local e comunitária (sustentada)?"
+  - intent: faq/8
+    examples: "- Quais os primeiros sintomas da COVID-19?"
+  - intent: faq/9
+    examples: "- Como diferenciar gripe comum do coronavírus? UNA-SUS"
+  - intent: faq/10
+    examples:
+      "- Quais são os critérios para aplicação do teste? Pessoas com sintomas
+      leves não estão sendo testadas?"
+  - intent: faq/11
+    examples: "- Como posso fazer o teste de diagnóstico na Fiocruz?"
+  - intent: faq/12
+    examples: "- A COVID-19 pode apresentar outros sintomas?"
+  - intent: faq/13
+    examples: "- Pessoas com sintomas leves podem transmitir a COVID-19?"
+  - intent: faq/14
+    examples: "- A pessoa pode transmitir o coronavírus mesmo sem apresentar sintoma?"
+  - intent: faq/15
+    examples: "- Quando a pessoa deve procurar atendimento de saúde?"
+  - intent: faq/16
+    examples: "- Devo me preocupar com o coronavírus?"
+  - intent: faq/17
+    examples: "- A infecção pelo coronavírus pode provocar sintomas graves?"
+  - intent: faq/18
+    examples:
+      "- Quais são as pessoas com maior risco para evoluir com formas graves
+      da doença?"
+  - intent: faq/19
+    examples: "- Quais são as pessoas que compõem os grupos de risco ou vulnerável?"
+  - intent: faq/20
+    examples: "- As pessoas que se recuperam da COVID-19 podem ser infectadas novamente?"
+  - intent: faq/21
+    examples: "- Qual é o risco para as mulheres grávidas de contrair a COVID-19?"
+  - intent: faq/22
+    examples: "- A COVID-19 pode causar problemas durante a gravidez?"
+  - intent: faq/23
+    examples:
+      "- Uma mulher lactante que tenha sido infectada pelo coronavírus pode
+      continuar amamentando?"
+  - intent: faq/24
+    examples: "- O que é etiqueta respiratória?"
+  - intent: faq/25
+    examples: "- Se estiver doente, o que fazer para não passar a doença?"
+  - intent: faq/26
+    examples:
+      "- O que posso fazer para evitar a propagação da COVID-19 no meu local
+      de trabalho?"
+  - intent: faq/27
+    examples: "- O que fazer em casos de viagens essenciais/inadiáveis?"
+  - intent: faq/28
+    examples:
+      "- O que devo fazer ao retornar de viagem? 8) Quais os primeiros sintomas
+      da COVID-19?17) A infecção pelo coronavírus pode provocar sintomas graves?Baixe/acesse
+      o quadro comparativo."
+  - intent: faq/29
+    examples: "- Como o coronavírus é transmitido?"
+  - intent: faq/30
+    examples: "- Qual o tratamento para as pessoas com COVID-19?"
+  - intent: faq/31
+    examples: "- O que se pode fazer para controlar os sintomas?"
+  - intent: faq/32
+    examples: "- A vacina para influenza pode proteger também contra o novo coronavírus?"
+  - intent: faq/33
+    examples: "- O que é período de incubação?"
+  - intent: faq/34
+    examples: "- Qual o período de incubação do coronavírus?"
+  - intent: faq/35
+    examples: "- Quem deve usar máscaras cirúrgicas?"
+  - intent: faq/36
+    examples: "- Como usar as máscaras cirúrgicas? Governo do Ceará"
+  - intent: faq/37
+    examples: "- Quando devo substituir a máscara cirúrgica por outra nova?"
+  - intent: faq/38
+    examples: "- Como remover a máscara cirúrgica?"
+  - intent: faq/39
+    examples: "- Como descartar a máscara?"
+  - intent: faq/40
+    examples:
+      "- É indicado usar luvas descartáveis em locais públicos para a prevenção
+      do coronavírus?"
+  - intent: faq/41
+    examples: "- Existe uma vacina ou medicamento contra COVID-19?"
+  - intent: faq/42
+    examples: "- Os antibióticos são eficazes na prevenção e/ou tratamento do COVID-19?"
+  - intent: faq/43
+    examples: "- Existem medicamentos para a prevenção de COVID-19?"
+  - intent: faq/44
+    examples: "- Posso utilizar a Cloroquina contra a COVID-19?"
+  - intent: faq/45
+    examples: "- Como profissionais de saúde devem se proteger?"
+  - intent: faq/46
+    examples:
+      "- Quais as medidas que os profissionais de saúde devem adotar, além do
+      uso de máscaras?"
+  - intent: faq/47
+    examples: "- O que são aerossóis?"
+  - intent: faq/48
+    examples: "- Quais os procedimentos produtores de aerossóis?"
+  - intent: faq/49
+    examples:
+      "- Existe algum protocolo para o uso da cloroquina/hidroxicloroquina no
+      Brasil?"
+  - intent: faq/50
+    examples: "- Como é o protocolo para o uso da cloroquina/hidroxicloroquina no Brasil?"
+  - intent: faq/51
+    examples:
+      "- Quais as medidas a serem adotadas em casas de repouso ou asilos para
+      idosos? orientações para a prevenção e o controle de infecções pelo novo coronavírus
+      (COVID-19) em instituições de longa permanência para idosos (ILPIs)"
+  - intent: faq/52
+    examples:
+      "- Como deve ser feito o atendimento pré-hospitalar móvel de urgência
+      e transporte interinstitucional de casos suspeitos ou confirmados? nota técnica
+      da Anvisa (NOTA TÉCNICA GVIMS/GGTES/ANVISA Nº 04/2020)"
+  - intent: faq/53
+    examples:
+      "- Quais medidas devem ser seguidas pelos serviços de saúde que prestam
+      atendimento ambulatorial ou de pronto atendimento aos casos suspeitos ou confirmados
+      pelo novo novo coronavírus (SARS-CoV-2)?"
+  - intent: faq/54
+    examples:
+      "- De acordo com o que se sabe até o momento, que orientações devem ser
+      seguidas pelos serviços de saúde?"
+  - intent: faq/55
+    examples:
+      "- Quais as orientações de precauções durante a assistência aos pacientes
+      suspeitos ou confirmados? Quais os procedimentos produtores de aerossóis?"
+  - intent: faq/56
+    examples:
+      "- Onde devem ser realizados os procedimentos que podem gerar aerossóis?
+      podem ser acessados por este link"
+  - intent: faq/57
+    examples: "- Quais são as orientações pós morte?"
+  - intent: faq/58
+    examples: "- Como deve ser feita a autópsia?"
+  - intent: faq/59
+    examples: "- Quais as orientações para funerárias?"
+  - intent: faq/60
+    examples: "- Como devem ser as recomendações relacionadas ao funeral?"
+  - intent: faq/61
+    examples:
+      "- Qual a classificação da atividade desenvolvida por profissionais de
+      saúde nos espaços e serviços de saúde ?"
+  - intent: faq/62
+    examples:
+      "- O atendimento odontológico deve ser mantido em hospitais e/ou consultórios
+      e ambulatórios?"
+  - intent: faq/63
+    examples: "- O que é oxigenoterapia? OXIGENOTERAPIA E VENTILAÇÃO NÃO INVASIVA."
+  - intent: faq/64
+    examples: "- O que é ventilação mecânica (VM)?"
+  - intent: faq/65
+    examples: "- Para que serve a ventilação mecânica (VM)?"
+  - intent: faq/66
+    examples: "- Quais são os tipos de ventilação mecânica (VM)?"
+  - intent: faq/67
+    examples: "- Quais as modalidades de ventilação existentes? https://multisaude.com.br/artigos/entendendo-a-ventilacao-mecanica/"
+  - intent: faq/68
+    examples: "- O que é qSOFA?"
+  - intent: faq/69
+    examples: "- O que é posição prona? https://www.jornaldepneumologia.com.br/detalhe_artigo.asp?id=1471"
+  - intent: faq/70
+    examples: "- O que é sepse? https://www.einstein.br/doencas-sintomas/sepse-hemodinamica"
+  - intent: faq/71
+    examples: "- O que é choque séptico?"
+  - intent: faq/72
+    examples:
+      "- Quais os antivirais utilizados para COVID-19? Diversos candidatos com
+      atividade potencial anti-COVID-19 estão sendo avaliados em protocolos de ensaios
+      clínicos."
+  - intent: faq/73
+    examples:
+      "- Quais os exames necessários na admissão que devem ser igualmente utilizados
+      para avaliar a evolução clínica dos pacientes? (The Lancet)"
+  - intent: faq/74
+    examples: "- O que é tempestade de citocinas?"
+  - intent: faq/75
+    examples: "- O que é hipoxemia e hipóxia? http://www2.ebserh.gov.br/documents/147715/393018/Doencas_e_Oxigenoterapia.pdf"
+  - intent: faq/76
+    examples: "- O que é hipóxia silenciosa?"
+  - intent: faq/77
+    examples: "- Como deve ser o manejo clínico para gestante com COVID-19? https://portaldeboaspraticas.iff.fiocruz.br/atencao-mulher/covid-19-fluxos-de-manejo-clinico-de-gestantes-adultos-e-idosos-na-atencao-especializada/"
+  - intent: faq/78
+    examples:
+      "- Como devem ser tratados os casos especiais (pacientes oncológicos,
+      tuberculose, doenças cardiovasculares, transplantados, imunossuprimidos, HIV positivos)?
+      https://portalarquivos.saude.gov.br/images/pdf/2020/April/13/Diretrizes-COVID-13-4.pdf"
+  - intent: faq/79
+    examples: "- Quais são as orientações pós-morte?"
+  - intent: faq/80
+    examples: "- O que é Síndrome Gripal (SG)?"
+  - intent: faq/81
+    examples:
+      "- O que é Síndrome Respiratória Aguda Grave (SRAG)? https://portalarquivos.saude.gov.br/images/pdf/2020/April/16/01-recomendacoes-de-protecao.pdfhttps://saude.gov.br/images/pdf/2020/marco/30/20200330-AtendimentoOdontologico-Fluxo-ver002-Final.pdfhttp://www.szpilman.com/CTI/protocolos/Oxig%C3%AAnio%20e%20ventila%C3%A7%C3%A3o%20n%C3%A3o%20invasiva.pdfVentilação
+      mecânica: princípios, análise gráfica e modalidades ventilatóriasEntendendo a
+      ventilação mecânica, por Elizabeth GalvãoHospital Einstein"
+  - intent: faq/82
+    examples: "- Tem alguma temperatura que o vírus não resista?"
+  - intent: faq/83
+    examples: "- Ferver água mata o vírus?"
+  - intent: faq/84
+    examples: "- Água e sabão mata o vírus?"
+  - intent: faq/85
+    examples: "- Existe uma receita de gel pra fazer em casa?"
+  - intent: faq/86
+    examples: "- EPosso pegar o COVID-19 do meu animal de estimação?"
+  - intent: faq/87
+    examples:
+      "- É seguro receber um pacote de qualquer área em que o COVID-19 tenha
+      sido relatado?"
+  - intent: faq/88
+    examples: "- Quanto tempo o vírus sobrevive em superfícies?"
+  - intent: faq/89
+    examples: "- Existe algum cuidado especial com as roupas?"
+  - intent: faq/90
+    examples: "- Devemos adiar reuniões, festas de aniversário, casamentos, cultos religiosos?"
+  - intent: faq/91
+    examples:
+      "- Há um caso de coronavírus confirmado na minha casa. Como fazer o isolamento
+      domiciliar?"
+  - intent: faq/92
+    examples:
+      "- Há um caso de coronavírus confirmado na minha casa. Quais os itens
+      precisam ser separados?"
+  - intent: faq/93
+    examples:
+      "- Há um caso de coronavírus confirmado na minha casa. Quais as condutas
+      para a pessoa com COVID-19?"
+  - intent: faq/94
+    examples:
+      "- Há um caso de coronavírus confirmado na minha casa. Quais as condutas
+      para todos os outros moradores?"
+  - intent: faq/95
+    examples:
+      "- Os elevadores devem ser usados ao mesmo tempo para mais de uma pessoa
+      ou família?"
+  - intent: faq/96
+    examples: "- Consumir alho ajuda na prevenção do coronavírus?"
+  - intent: faq/97
+    examples: "- Tomar vitamina C, D e/ou própolis ajuda a prevenir contra o vírus?"
+  - intent: faq/98
+    examples:
+      "- Chá de abacate com hortelã, mel, uísque ou outras substâncias previnem
+      a infecção pelo coronavírus?"
+  - intent: faq/99
+    examples:
+      "- Existe algum medicamento que não deva ser usado em casos suspeitos
+      ou confirmados de COVID-19?"
+  - intent: faq/100
+    examples:
+      "- Por que se indica o álcool gel na concentração de 70% para higienização
+      das mãos?"
