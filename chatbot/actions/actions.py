@@ -4,6 +4,8 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.events import UserUtteranceReverted
 from rasa_sdk.executor import CollectingDispatcher
 
+from . import api
+
 FINISH_OPTIONS = [
     {'title': 'Dúvida sobre COVID', 'payload': '/intent_welcome'},
     {'title': 'Finalizar', 'payload': '/intent_finish'}
@@ -93,9 +95,8 @@ class RespondFaq(Action):
         message_user = message_user['response_selector']['faq']
         message_user = message_user['response']['intent_response_key']
         question_id = message_user.replace('faq/', '')
-        print(question_id)
 
-        message = 'RESPONDE FAQ\n\n'
+        message = api.get_response_by_question_id(question_id)
 
         dispatcher.utter_message(text=message)
 
