@@ -1,10 +1,12 @@
 from pathlib import Path
 import sqlite3
 
+from faq.config import DATABASE_PATH
+
 
 class CoreDatabase:
     def __init__(self):
-        self.conn = sqlite3.connect(Path('../core.sqlite'))
+        self.conn = sqlite3.connect(Path(DATABASE_PATH))
         self.conn.row_factory = sqlite3.Row
         self.cursor = self.conn.cursor()
 
