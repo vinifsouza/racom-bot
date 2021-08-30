@@ -1,6 +1,9 @@
+import os
+import sys
 import json
 from sqlite3 import IntegrityError
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # nopep8
 from scrap.main import start_scrap
 from database.build_db import CoreDatabase
 
