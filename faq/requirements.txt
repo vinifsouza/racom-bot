@@ -21,6 +21,7 @@ pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.20
 PyDispatcher==2.0.5
+PyMySQL==1.0.2
 pyOpenSSL==20.0.1
 queuelib==1.6.2
 Scrapy==2.5.0

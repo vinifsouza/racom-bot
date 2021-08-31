@@ -1,7 +1,7 @@
 import os
 import sys
 import json
-from sqlite3 import IntegrityError
+from pymysql import IntegrityError
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # nopep8
 from scrap.main import start_scrap
@@ -30,8 +30,7 @@ for faq in faqs['articles']:
             faq['category_id']
         )
     except IntegrityError as e:
-        msg = ''.join(e.args)
-        if not 'UNIQUE' in msg:
+        if not 'Duplicate' in str(e):
             raise e
 
 print('Database built and updated successfully')
