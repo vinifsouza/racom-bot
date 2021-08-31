@@ -1,7 +1,8 @@
+// import Exception from "../core/exceptions/Exception";
+
+import FAQController from "./controllers/FAQController";
 import express from "express";
 import indexController from "./controllers/IndexController";
-import FAQController from "./controllers/FAQController";
-import Exception from "../core/exceptions/Exception";
 
 const router = express.Router();
 
@@ -12,8 +13,10 @@ router.get("/faq/questions", FAQController.getFatQuestion);
 
 router.get("/category", FAQController.getCategory);
 
-router.all("*", () => {
-  throw new Exception(404, "Page not found");
-});
+router.get("/health", FAQController.healthCheck);
+
+// router.all("*", () => {
+//   throw new Exception(404, "Page not found");
+// });
 
 export default router;
