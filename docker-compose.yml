@@ -1,7 +1,7 @@
 version: "3"
 services:
   mysql-app:
-    container_name: db_containter
+    container_name: db_container
     image: mysql:5.7.22
     command: --innodb-use-native-aio=0
     ports:
@@ -12,7 +12,7 @@ services:
     networks:
       - app-network
   faq:
-    container_name: faq_containter
+    container_name: faq_container
     build:
       context: .
       dockerfile: faq/docker/Dockerfile
@@ -31,7 +31,7 @@ services:
     restart: on-failure
 
   api:
-    container_name: api_containter
+    container_name: api_container
     ports:
       - "4444:4444"
     build:
@@ -51,7 +51,7 @@ services:
       - app-network
 
   ngrok:
-    container_name: ngrok_containter
+    container_name: ngrok_container
     image: wernight/ngrok:latest
     ports:
       - "4040:4040"
@@ -59,12 +59,12 @@ services:
       - app-network
     environment:
       NGROK_PROTOCOL: http
-      NGROK_PORT: localhost:5005
+      NGROK_PORT: chatbot:5005
       NGROK_AUTH: 1xMloFLtcfT2XBzrAHTh60LCDL1_7pEjej7VZ8J5Q8cy7MH5c
 
   chatbot_action:
     image: rasa/rasa-sdk
-    container_name: chatbot_action_containter
+    container_name: chatbot_action_container
     volumes:
       - ./chatbot/actions:/app/actions
     environment:
@@ -76,7 +76,7 @@ services:
       - "5055:5055"
 
   chatbot:
-    container_name: chatbot_containter
+    container_name: chatbot_container
     depends_on:
       - faq
       - api
@@ -89,6 +89,10 @@ services:
       - "5005:5005"
       - "5002:5002"
     environment:
+      - IS_DOCKER=true
+      - RASA_ACTION_URL=chatbot_action:5055
+      - NGROK_HOST=ngrok
+      - NGROK_PORT=4040
       - API_PORT=4444
       - API_HOST=api
       - WAIT_HOSTS=mysql-app:3306, api:4444, chatbot_action:5055, ngrok:4040
