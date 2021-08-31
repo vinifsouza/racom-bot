@@ -45,6 +45,10 @@ class FAQRepository {
       })
       .orderBy("faq_id");
   }
+
+  async healtChecking(): Promise<any> {
+    return db("information_schema.schemata").select(1);
+  }
 }
 
 export default new FAQRepository();
