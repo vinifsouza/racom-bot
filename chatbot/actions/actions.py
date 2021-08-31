@@ -1,15 +1,25 @@
 from typing import Any, Text, Dict, List
+import os
+import requests
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import UserUtteranceReverted
 from rasa_sdk.executor import CollectingDispatcher
 
-from . import api
-
 FINISH_OPTIONS = [
     {'title': 'Dúvida sobre COVID', 'payload': '/intent_welcome'},
     {'title': 'Finalizar', 'payload': '/intent_finish'}
 ]
+
+API_PORT = os.environ.get('API_PORT') or '4444'
+API_HOST = os.environ.get('API_HOST') or 'http://localhost'
+RANCOM_API_URL = f'http://{API_HOST}:{API_PORT}'
+
+
+def get_response_by_question_id(id: int) -> str:
+    req = requests.get(RANCOM_API_URL, params={'id': id})
+
+    return req.json()['data'][0]['answer']
 
 
 class ActionDefaultFallback(Action):
@@ -96,7 +106,7 @@ class RespondFaq(Action):
         message_user = message_user['response']['intent_response_key']
         question_id = message_user.replace('faq/', '')
 
-        message = api.get_response_by_question_id(question_id)
+        message = get_response_by_question_id(question_id)
 
         dispatcher.utter_message(text=message)
 
