@@ -1,0 +1,90 @@
+version: "3"
+services:
+  mysql-app:
+    container_name: db_containter
+    image: mysql:5.7.22
+    command: --innodb-use-native-aio=0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: rasa_db
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - app-network
+  faq:
+    container_name: faq_containter
+    build:
+      context: .
+      dockerfile: faq/docker/Dockerfile
+    depends_on:
+      - mysql-app
+    environment:
+      - API_PORT=4444
+      - DATABASE_HOST=mysql-app
+      - DATABASE_PORT=3306
+      - DATABASE_USER=root
+      - DATABASE_PASS=password
+      - DATABASE_NAME=rasa_db
+      - WAIT_HOSTS=mysql-app:3306, api:4444
+    networks:
+      - app-network
+    restart: on-failure
+
+  api:
+    container_name: api_containter
+    ports:
+      - "4444:4444"
+    build:
+      context: .
+      dockerfile: api/docker/Dockerfile
+    depends_on:
+      - faq
+      - mysql-app
+    environment:
+      - API_PORT=4444
+      - DATABASE_HOST=mysql-app
+      - DATABASE_PORT=3306
+      - DATABASE_USER=root
+      - DATABASE_PASS=password
+      - DATABASE_NAME=rasa_db
+    networks:
+      - app-network
+
+  chatbot_action:
+    image: rasa/rasa-sdk
+    container_name: chatbot_action_containter
+    volumes:
+      - ./chatbot/actions:/app/actions
+    environment:
+      - API_PORT=4444
+      - API_HOST=api
+    networks:
+      - app-network
+    ports:
+      - "5055:5055"
+
+  chatbot:
+    container_name: chatbot_containter
+    depends_on:
+      - faq
+      - api
+      - ngrok
+      - chatbot_action
+    build:
+      context: .
+      dockerfile: chatbot/docker/Dockerfile
+    ports:
+      - "5005:5005"
+      - "5002:5002"
+    environment:
+      - API_PORT=4444
+      - API_HOST=api
+      - WAIT_HOSTS=mysql-app:3306, api:4444, chatbot_action:5055
+    restart: on-failure
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    name: rasa_network
+    driver: bridge
