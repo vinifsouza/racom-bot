@@ -1,3 +1,4 @@
 .venv**
-.venv_chatbot
 node_modules
+faq-scraping.json
+**.tar.gz
