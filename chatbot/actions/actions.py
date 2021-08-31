@@ -17,7 +17,7 @@ RANCOM_API_URL = f'http://{API_HOST}:{API_PORT}'
 
 
 def get_response_by_question_id(id: int) -> str:
-    req = requests.get(RANCOM_API_URL, params={'id': id})
+    req = requests.get(f'{RANCOM_API_URL}/faq', params={'id': id})
 
     return req.json()['data'][0]['answer']
 
