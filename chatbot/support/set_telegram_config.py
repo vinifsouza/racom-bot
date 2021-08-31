@@ -1,9 +1,13 @@
 import json
+# import os
 import requests
 
 import yaml
 
-from config import CHATBOT_CREDENTIALS_YML_PATH
+from config import (
+    CHATBOT_CREDENTIALS_YML_PATH,
+    NGROK_API_URL
+)
 
 
 def load_yml_existing(path):
@@ -12,7 +16,7 @@ def load_yml_existing(path):
 
 
 def get_ngrok_url():
-    url = "http://localhost:4040/api/tunnels"
+    url = f"{NGROK_API_URL}/api/tunnels"
     res = requests.get(url)
     res_unicode = res.content.decode("utf-8")
     res_json = json.loads(res_unicode)
@@ -23,6 +27,7 @@ def main():
     yml_loaded = load_yml_existing(CHATBOT_CREDENTIALS_YML_PATH)
 
     ngrok_url = get_ngrok_url()
+    # os.environ['TELEGRAM_URL'] = ngrok_url
     ngrok_url = f'{ngrok_url}/webhooks/telegram/webhook'
 
     yml_loaded['telegram']['webhook_url'] = ngrok_url
