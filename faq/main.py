@@ -30,7 +30,7 @@ for faq in faqs['articles']:
             faq['category_id']
         )
     except IntegrityError as e:
-        if not 'Duplicate' in str(e):
+        if 'Duplicate' not in str(e):
             raise e
 
 print('Database built and updated successfully')
