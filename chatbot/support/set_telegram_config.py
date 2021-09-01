@@ -26,6 +26,8 @@ def main():
 
     ngrok_url = f'{ngrok_url}/webhooks/telegram/webhook'
 
+    ngrok_url = ngrok_url.replace('http://', 'https://')
+
     yml_loaded['telegram']['webhook_url'] = ngrok_url
 
     yaml.preserve_quotes = False

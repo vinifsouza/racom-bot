@@ -11,6 +11,8 @@ services:
       MYSQL_ROOT_PASSWORD: password
     networks:
       - app-network
+    restart: on-failure
+
   faq:
     container_name: faq_container
     build:
@@ -25,7 +27,7 @@ services:
       - DATABASE_USER=root
       - DATABASE_PASS=password
       - DATABASE_NAME=rasa_db
-      - WAIT_HOSTS=mysql-app:3306, api:4444
+      - WAIT_HOSTS=mysql-app:3306
     networks:
       - app-network
     restart: on-failure
@@ -40,6 +42,8 @@ services:
     depends_on:
       - faq
       - mysql-app
+    links:
+      - "faq:faq"
     environment:
       - API_PORT=4444
       - DATABASE_HOST=mysql-app
@@ -47,8 +51,11 @@ services:
       - DATABASE_USER=root
       - DATABASE_PASS=password
       - DATABASE_NAME=rasa_db
+      - WAIT_HOSTS=mysql-app:3306
+      - WAIT_SLEEP_INTERVAL=120
     networks:
       - app-network
+    restart: on-failure
 
   ngrok:
     container_name: ngrok_container
@@ -61,19 +68,27 @@ services:
       NGROK_PROTOCOL: http
       NGROK_PORT: chatbot:5005
       NGROK_AUTH: 1xMloFLtcfT2XBzrAHTh60LCDL1_7pEjej7VZ8J5Q8cy7MH5c
+    restart: on-failure
 
   chatbot_action:
-    image: rasa/rasa-sdk
     container_name: chatbot_action_container
-    volumes:
-      - ./chatbot/actions:/app/actions
+    build:
+      context: .
+      dockerfile: chatbot/docker/Dockerfile.actions
+    depends_on:
+      - api
+      - mysql-app
+      - faq
     environment:
       - API_PORT=4444
       - API_HOST=api
+      - WAIT_HOSTS=mysql-app:3306, api:4444
+      - WAIT_SLEEP_INTERVAL=20
     networks:
       - app-network
     ports:
       - "5055:5055"
+    restart: on-failure
 
   chatbot:
     container_name: chatbot_container
@@ -96,6 +111,7 @@ services:
       - API_PORT=4444
       - API_HOST=api
       - WAIT_HOSTS=mysql-app:3306, api:4444, chatbot_action:5055, ngrok:4040
+      - WAIT_SLEEP_INTERVAL=40
     restart: on-failure
     networks:
       - app-network
