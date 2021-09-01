@@ -106,6 +106,7 @@ services:
     environment:
       - IS_DOCKER=true
       - RASA_ACTION_URL=chatbot_action:5055
+      - CHATBOT_HOST=chatbot
       - NGROK_HOST=ngrok
       - NGROK_PORT=4040
       - API_PORT=4444
