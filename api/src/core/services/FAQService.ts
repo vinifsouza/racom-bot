@@ -26,6 +26,10 @@ class FAQService {
 
     throw new Exception(500, "Database is not ready");
   }
+
+  async unrecognizedMessage(message): Promise<boolean> {
+    return FAQRepository.unrecognizedMessage(message);
+  }
 }
 
 export default new FAQService();

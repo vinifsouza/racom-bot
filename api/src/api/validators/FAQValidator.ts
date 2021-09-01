@@ -1,8 +1,8 @@
 import * as Yup from "yup";
-import Exception from "./../../core/exceptions/Exception";
 
-import { Request } from "express";
+import Exception from "./../../core/exceptions/Exception";
 import { IFAQValidate } from "./../../core/interfaces/IFAQ";
+import { Request } from "express";
 
 class FAQValidator {
   async faqValidate(req: Request): Promise<IFAQValidate> {
@@ -14,6 +14,26 @@ class FAQValidator {
     const payload = {
       id: req.query.id,
       question: req.query.question,
+    };
+
+    return schema.validate(payload, { abortEarly: false }).catch((err) => {
+      const errors = {};
+
+      err.inner.forEach((error) => {
+        errors[error.path] = error.message;
+      });
+
+      throw new Exception(400, errors);
+    });
+  }
+
+  async messageValidate(req: Request): Promise<any> {
+    const schema = Yup.object({
+      message: Yup.string().optional(),
+    });
+
+    const payload = {
+      message: req.body.message,
     };
 
     return schema.validate(payload, { abortEarly: false }).catch((err) => {

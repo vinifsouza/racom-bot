@@ -49,6 +49,13 @@ class FAQRepository {
   async healtChecking(): Promise<any> {
     return db("information_schema.schemata").select(1);
   }
+
+  async unrecognizedMessage(message): Promise<any> {
+    return db("TUnrecognizedMessage")
+      .insert({ ums_text: message })
+      .returning("*")
+      .toString();
+  }
 }
 
 export default new FAQRepository();

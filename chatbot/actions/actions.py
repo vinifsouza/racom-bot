@@ -1,5 +1,6 @@
 from typing import Any, Text, Dict, List
 import os
+import json
 import requests
 
 from rasa_sdk import Action, Tracker
@@ -22,6 +23,14 @@ def get_response_by_question_id(id: int) -> str:
     return req.json()['data'][0]['answer']
 
 
+def post_unrecognized_message(message: str) -> bool:
+    requests.post(f'{RANCOM_API_URL}/unrecognized', data={
+        message: message
+    })
+
+    return True
+
+
 class ActionDefaultFallback(Action):
     def name(self) -> Text:
         return 'action_default_fallback'
@@ -32,6 +41,9 @@ class ActionDefaultFallback(Action):
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
+
+        payload = json.dumps(tracker.latest_message)
+        post_unrecognized_message(payload)
 
         msg = 'Desculpe, não consegui compreender sua dúvida\n'
         msg += 'Por gentileza, tente novamente escrevendo de outra forma'
