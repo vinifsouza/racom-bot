@@ -18,12 +18,12 @@ docker-compose up
 
 ### Portas utilizadas
 
-`localhost:`**`3306`**: Racom Banco de dados (MySQL)
-`localhost:`**`4040`**: Túnel de conexão (Ngrok)
-`localhost:`**`4444`**: Racom API (Node.js)
-`localhost:`**`5002`**: Rasa API
-`localhost:`**`5005`**: Rasa Server
-`localhost:`**`5055`**: Rasa Action Server
+- `localhost:`**`3306`**: Racom Banco de dados (MySQL)
+- `localhost:`**`4040`**: Túnel de conexão (Ngrok)
+- `localhost:`**`4444`**: Racom API (Node.js)
+- `localhost:`**`5002`**: Rasa API
+- `localhost:`**`5005`**: Rasa Server
+- `localhost:`**`5055`**: Rasa Action Server
 
 ### Observações
 
