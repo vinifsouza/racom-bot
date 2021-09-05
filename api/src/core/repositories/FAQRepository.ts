@@ -1,6 +1,6 @@
 import { ICategory, IFAQ, IFAQQuestion } from "../interfaces/IFAQ";
 
-import db from "../database/racomFAQ";
+import db from "../database/racomDB";
 
 class FAQRepository {
   async getFAQCategories(): Promise<ICategory[] | []> {
@@ -44,10 +44,6 @@ class FAQRepository {
         }
       })
       .orderBy("faq_id");
-  }
-
-  async healtChecking(): Promise<any> {
-    return db("information_schema.schemata").select(1);
   }
 
   async unrecognizedMessage(message): Promise<any> {

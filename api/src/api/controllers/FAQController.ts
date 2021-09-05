@@ -37,31 +37,6 @@ class FAQController extends Controller {
       next(err);
     }
   }
-
-  async healthCheck(req: Request, res: Response, next: NextFunction) {
-    try {
-      const hc = await FAQService.healthCheck();
-
-      super.response(res, { status: hc });
-    } catch (err) {
-      next(err);
-    }
-  }
-
-  async unrecognizedMessage(req: Request, res: Response, next: NextFunction) {
-    try {
-      const { message } = await FAQValidator.messageValidate(req);
-
-      const payload = await FAQService.unrecognizedMessage(message);
-
-      super.response(res, {
-        message: "Regristro adicionado com sucesso",
-        payload,
-      });
-    } catch (err) {
-      next(err);
-    }
-  }
 }
 
 export default new FAQController();

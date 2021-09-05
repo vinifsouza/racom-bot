@@ -26,26 +26,6 @@ class FAQValidator {
       throw new Exception(400, errors);
     });
   }
-
-  async messageValidate(req: Request): Promise<any> {
-    const schema = Yup.object({
-      message: Yup.string().optional(),
-    });
-
-    const payload = {
-      message: req.body.message,
-    };
-
-    return schema.validate(payload, { abortEarly: false }).catch((err) => {
-      const errors = {};
-
-      err.inner.forEach((error) => {
-        errors[error.path] = error.message;
-      });
-
-      throw new Exception(400, errors);
-    });
-  }
 }
 
 export default new FAQValidator();

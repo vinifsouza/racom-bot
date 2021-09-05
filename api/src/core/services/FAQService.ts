@@ -1,6 +1,5 @@
 import { IFAQ, IFAQQuestion } from "../interfaces/IFAQ";
 
-import Exception from "../exceptions/Exception";
 import FAQRepository from "../repositories/FAQRepository";
 import { ICategory } from "./../interfaces/IFAQ";
 
@@ -15,20 +14,6 @@ class FAQService {
 
   async getCategoryFAQs(): Promise<ICategory[]> {
     return FAQRepository.getFAQCategories();
-  }
-
-  async healthCheck(): Promise<any> {
-    const hc = await FAQRepository.healtChecking();
-
-    if (hc) {
-      return true;
-    }
-
-    throw new Exception(500, "Database is not ready");
-  }
-
-  async unrecognizedMessage(message): Promise<boolean> {
-    return FAQRepository.unrecognizedMessage(message);
   }
 }
 
