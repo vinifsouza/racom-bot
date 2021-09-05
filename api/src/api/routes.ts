@@ -1,6 +1,6 @@
-// import Exception from "../core/exceptions/Exception";
-
+import ConfigController from "./controllers/ConfigController";
 import FAQController from "./controllers/FAQController";
+import MessageController from "./controllers/MessageController";
 import express from "express";
 import indexController from "./controllers/IndexController";
 
@@ -10,13 +10,12 @@ router.get("/", indexController.index);
 
 router.get("/faq", FAQController.getFat);
 router.get("/faq/questions", FAQController.getFatQuestion);
-
 router.get("/category", FAQController.getCategory);
 
-router.get("/health", FAQController.healthCheck);
+router.post("/config", ConfigController.setConfig);
+router.get("/config", ConfigController.getConfig);
+router.get("/health", ConfigController.healthCheck);
 
-// router.all("*", () => {
-//   throw new Exception(404, "Page not found");
-// });
+router.post("/message/unrecognized", MessageController.unrecognizedMessage);
 
 export default router;
