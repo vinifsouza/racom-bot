@@ -31,6 +31,7 @@ class CoreDatabase:
         self.__create_category_table()
         self.__create_faq_table()
         self.__create_unrecognized_message_table()
+        self.__create_config_table()
 
         return None
 
@@ -118,6 +119,22 @@ class CoreDatabase:
             ums_text VARCHAR(512) UNIQUE NOT NULL,
             ums_dtcreate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
             ums_dtupdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        )
+        ENGINE = InnoDB AUTO_INCREMENT = 1
+        CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+        ''')
+
+        return None
+
+    def __create_config_table(self):
+        self.cursor.execute('''
+        CREATE TABLE IF NOT EXISTS TConfig (
+            cfg_id INT PRIMARY KEY AUTO_INCREMENT,
+            cfg_field VARCHAR(512) NOT NULL,
+            cfg_value VARCHAR(512) NOT NULL,
+            cfg_app VARCHAR(512) NOT NULL,
+            cfg_dtcreate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            cfg_dtupdate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         )
         ENGINE = InnoDB AUTO_INCREMENT = 1
         CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
