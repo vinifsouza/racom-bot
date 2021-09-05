@@ -2,7 +2,7 @@ import yaml
 import requests
 
 
-from chatbot.config import CHATBOT_NLU_YML_PATH, RANCOM_API_URL
+from config import CHATBOT_NLU_YML_PATH, RANCOM_API_URL
 
 
 def load_yml_existing(path):
