@@ -24,9 +24,11 @@ def get_response_by_question_id(id: int) -> str:
 
 
 def post_unrecognized_message(message: str) -> bool:
-    requests.post(f'{RANCOM_API_URL}/unrecognized', data={
-        message: message
-    })
+    requests.post(
+        f'{RANCOM_API_URL}/message/unrecognized',
+        data={message: message},
+        headers={"Content-Type": "application/json"}
+    )
 
     return True
 
