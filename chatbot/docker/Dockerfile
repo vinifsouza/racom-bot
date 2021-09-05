@@ -14,4 +14,4 @@ WORKDIR /chatbot
 
 CMD /wait && python /chatbot/main.py && rasa train && rasa run -p 5005 -m /chatbot/models \
     --credentials /chatbot/credentials.yml \
-    --enable-api --endpoints /chatbot/endpoints.yml
+    --enable-api --endpoints /chatbot/endpoints.yml --cors "*"

@@ -116,6 +116,27 @@ services:
     restart: on-failure
     networks:
       - app-network
+  webchat:
+    container_name: chatbot_webchat
+    build:
+      context: .
+      dockerfile: webchat/Dockerfile
+    depends_on:
+      - faq
+      - api
+      - ngrok
+      - chatbot_action
+      - chatbot
+    ports:
+      - "4445:4445"
+    environment:
+      - WEBCHAT_PORT=4445
+      - WEBCHAT_HOST=webchat
+      - WAIT_HOSTS=mysql-app:3306, api:4444, chatbot_action:5055, ngrok:4040, chatbot:5005
+      - WAIT_SLEEP_INTERVAL=60
+    restart: on-failure
+    networks:
+      - app-network
 
 networks:
   app-network:
