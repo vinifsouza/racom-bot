@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webchat</title>
+
+
+</head>
+
+<body>
+    <script>
+        !(function () {
+            let e = document.createElement("script"),
+                t = document.head || document.getElementsByTagName("head")[0];
+            (e.src =
+                "https://cdn.jsdelivr.net/npm/rasa-webchat@1.0.1/lib/index.js"),
+            // Replace 1.x.x with the version that you want
+            (e.async = !0),
+            (e.onload = () => {
+                fetch('http://localhost:4444/config?field=ngrok_url&app=chatbot', {
+                    method: 'GET'
+                }).then(res => {
+                    res.json().then(response => {
+                        const url = response.data.value;
+
+                        window.WebChat.default({
+                                initPayload: "/intent_welcome",
+                                customData: {
+                                    language: "pt"
+                                },
+                                socketUrl: url,
+                                socketPath: "/socket.io/",
+                                title: "Racom Bot",
+                                subtitle: "Dúvidas sobre Coronavírus",
+                                inputTextFieldHint: "Digite aqui",
+                                displayUnreadCount: true
+                            },
+                            null
+                        );
+                    })
+                }).catch(err => {
+                    console.log(err);
+                })
+            }),
+            t.insertBefore(e, t.firstChild);
+        })();
+    </script>
+</body>
+
+</html>
