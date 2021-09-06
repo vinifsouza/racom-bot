@@ -17,8 +17,8 @@ docker-compose up
 ```
 
 ### Cainais
-**Telegram**: [@racom_bot](http://t.me/racom_bot)
-**Webchat**: [:4445](http://localhost:4445)
+- **Telegram**: [@racom_bot](http://t.me/racom_bot)
+- **Webchat**: [:4445](http://localhost:4445)
 
 ### Portas utilizadas
 
