@@ -2,6 +2,13 @@
 
 # Racom Chatbot
 
+<!-- infos to portfolio
+<iconfy>icon->vscode-icons:file-type-python<iconfy>
+<iconfy>icon->logos:typescript-icon<iconfy>
+<iconfy>icon->vscode-icons:file-type-mysql<iconfy>
+<logo-url>logo_url->https://i.imgur.com/Kjc7lfV.png<logo-url>
+-->
+
 Chatbot construido com o framework Rasa.
 
 ![Python](https://img.shields.io/badge/python-3670A0?logo=python&logoColor=ffdd54) [![Rasa](https://img.shields.io/badge/rasa-2.8.3-000000.svg?style=flat-square)](https://rasa.com/docs/rasa/) ![Scrapy](https://img.shields.io/badge/scrapy-2.5.0-60a839.svg?style=flat-square) ![Docker](https://img.shields.io/badge/docker-%2300f.svg?logo=docker&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?logo=node.js&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?logo=typescript&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?logo=mysql&logoColor=white) 
