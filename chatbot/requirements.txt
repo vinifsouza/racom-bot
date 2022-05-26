@@ -134,7 +134,7 @@ twilio==6.50.1
 typeguard==2.12.1
 typing-extensions==3.10.0.0
 tzlocal==2.1
-ujson==4.1.0
+ujson==5.2.0
 urllib3==1.26.6
 uvloop==0.14.0
 wcwidth==0.2.5
