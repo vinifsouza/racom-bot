@@ -23,7 +23,7 @@ Para inicializar a aplicação, basta executar o comando abaixo na raiz do proje
 docker-compose up
 ```
 
-### Cainais
+### Canais
 - **Telegram**: [@racom_bot](http://t.me/racom_bot)
 - **Webchat**: [:4445](http://localhost:4445)
 
