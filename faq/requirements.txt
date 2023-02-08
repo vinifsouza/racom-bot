@@ -2,7 +2,7 @@ attrs==21.2.0
 Automat==20.2.0
 cffi==1.14.6
 constantly==15.1.0
-cryptography==3.4.8
+cryptography==39.0.1
 cssselect==1.1.0
 h2==3.2.0
 hpack==3.0.0
