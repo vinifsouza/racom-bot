@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM node:18.17.1-alpine
 
 ADD /webchat /webchat
 
