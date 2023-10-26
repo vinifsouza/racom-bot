@@ -2,7 +2,7 @@ attrs==21.2.0
 Automat==20.2.0
 cffi==1.14.6
 constantly==15.1.0
-cryptography==41.0.3
+cryptography==41.0.5
 cssselect==1.1.0
 h2==3.2.0
 hpack==3.0.0
@@ -27,7 +27,7 @@ queuelib==1.6.2
 Scrapy==2.6.2
 service-identity==21.1.0
 six==1.16.0
-Twisted==22.10.0
+Twisted==23.10.0rc1
 typing-extensions==3.10.0.0
 w3lib==1.22.0
 zope.interface==5.4.0
