@@ -29,7 +29,7 @@ docopt==0.6.2
 editdistance==0.5.3
 fbmessenger==6.0.0
 Flask==2.2.5
-future==0.18.2
+future==0.18.3
 fuzzy-matcher==0.1.0
 gast==0.3.3
 google-auth==1.35.0
