@@ -24,7 +24,7 @@ PyDispatcher==2.0.5
 PyMySQL==1.0.2
 pyOpenSSL==20.0.1
 queuelib==1.6.2
-Scrapy==2.6.2
+Scrapy==2.11.1
 service-identity==21.1.0
 six==1.16.0
 Twisted==22.10.0
